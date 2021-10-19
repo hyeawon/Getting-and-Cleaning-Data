@@ -9,7 +9,7 @@ Activity Labels
 	
 	There are 562 features.
 
-	These signals were used to estimate variables of the feature vector for 	each pattern:  
+	These signals were used to estimate variables of the feature vector for each pattern:  
 	'-XYZ' is used to denote 3-axial signals in the X, Y and Z directions.
 
 		tBodyAcc-XYZ
@@ -156,7 +156,7 @@ Activity Labels
 		200	tBodyGyroJerk-correlation()-Y,Z
 
 
-	The magnitude of these three-dimensional signals were calculated using the 	Euclidean norm (tBodyAccMag, tGravityAccMag, tBodyAccJerkMag, 	tBodyGyroMag, tBodyGyroJerkMag)
+	The magnitude of these three-dimensional signals were calculated using the Euclidean norm (tBodyAccMag, tGravityAccMag, tBodyAccJerkMag, tBodyGyroMag, tBodyGyroJerkMag)
 
 			tGravityAccMag
 
@@ -252,9 +252,9 @@ Activity Labels
 		265	tBodyGyroJerkMag-arCoeff()4
 
 
-	Fast Fourier Transform (FFT) was applied to some of these signals 	producing fBodyAcc-XYZ, fBodyAccJerk-XYZ, fBodyGyro-XYZ, fBodyAccJerkMag, 	fBodyGyroMag, fBodyGyroJerkMag. (Note the 'f' to indicate frequency domain 	signals.
+	Fast Fourier Transform (FFT) was applied to some of these signals producing fBodyAcc-XYZ, fBodyAccJerk-XYZ, fBodyGyro-XYZ, fBodyAccJerkMag, fBodyGyroMag, fBodyGyroJerkMag. (Note the 'f' to indicate frequency domain 	signals.
 
-	There are fBodyBodyAccJerkMag as fBodyAccJerkMag and fBodyBodyGyroMag as 	fBodyGyroMag.
+	There are fBodyBodyAccJerkMag as fBodyAccJerkMag and fBodyBodyGyroMag as fBodyGyroMag.
 
 		516	fBodyBodyAccJerkMag-mean()
 		517	fBodyBodyAccJerkMag-std()
@@ -543,7 +543,7 @@ Activity Labels
 		502	fBodyGyro-bandsEnergy()-25,48
 
 
-  	There are inapplicable data in this analysis such as (tBodyAcc, 	tGravityAcc, tBodyGyro, fBodyBodyAccJerkMag, fBodyBodyGyroMag, 	fBodyBodyGyroJerkMag) .
+  	There are inapplicable data in this analysis such as (tBodyAcc, tGravityAcc, tBodyGyro, fBodyBodyAccJerkMag, fBodyBodyGyroMag, 	fBodyBodyGyroJerkMag) .
 	
 		V1	V2
 		1	tBodyAcc-mean()-X
