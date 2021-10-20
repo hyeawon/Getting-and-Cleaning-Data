@@ -1,10 +1,40 @@
 library(reshape2)
-
-	# STEP 1: Merges the training and the test sets to create 	one data set
+	1. Reading files	
+		# train files
+		xtrain <- read.table("X_train.txt")
+		ytrain <- read.table("Y_train.txt")
+		subjecttrain <- read.table("subject_train.txt")
+		
+		# test files
+		xtest <- read.table("X_test.txt")
+		ytest <- read.table("Y_test.txt")
+		subjecttest <- read.table("subject_test.txt")
+		
+		# activity labels, features, and features info files
+		activitylabels <- read.table("activity_labels.txt")
+		features <- read.table("features.txt")
+		featuresinfo <- read.table("features_info.txt")
+		
+	2. Merging the subject, activity, and features
+		# subject, activity, and features row binding
+		subject <- rbind(subjecttrain, subjecttest)
+		activity <- rbind(ytrain, ytest)
+		features <- rbind(xtrain, xtest)
+		# add subjectID and activityID in the subject and activity table
+		colnames(subject)<- "subjectID"
+		colnames(df_labels)<-"activityID")
+		colnames(features)<- features[,2]
+		# combine subject, activity, and features column binding
+		data <- cbind(subject,activity,features)
+	
+	3. Extracts only the measurements on the mean and standard deviation for each measurement.
+	subject, activity, and features column binding
+		colnames(subject) <- c(subject
+	# STEP 1: Merges the training and the test sets to create one data set
 
 	# Read subject_test data set	OK
 
-		subjectTest<-read.table("subject_test.txt", 		 	header=FALSE)
+		subjectTest<-read.table("subject_test.txt")
 
 	# Read x_test data set	OK
 
