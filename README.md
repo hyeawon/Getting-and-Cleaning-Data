@@ -1,5 +1,5 @@
 library(reshape2)
-	1. Reading files	
+	# Reading files	
 		# train files
 		xtrain <- read.table("X_train.txt")
 		ytrain <- read.table("Y_train.txt")
@@ -583,7 +583,7 @@ library(reshape2)
 		"560"	560	"angle(Y,gravityMean)"
 		"561"	561	"angle(Z,gravityMean)"
 		
-	2. Merging the subject, activity, and features
+	1. Merging the subject, activity, and features
 		# subject, activity, and features row binding
 		df_subject <- rbind(subjecttrain, subjecttest)
 		df_data <- rbind(xtrain, xtest)
@@ -595,7 +595,7 @@ library(reshape2)
 		data_colnames<- c(features$V2,subjectandactivity)  # combined the entire columns
 		names(data)<-names(data_colnames)
 		
-	3. Extracts only the measurements on the mean and standard deviation for each measurement.
+	2. Extracts only the measurements on the mean and standard deviation for each measurement.
 		meanstdcols <- names(data_colnames)[grep("mean\\(\\)|std\\(\\)",data_colnames)]
 		"1"	"tBodyAcc-mean()-X"
 		"2"	"tBodyAcc-mean()-Y"
@@ -663,7 +663,16 @@ library(reshape2)
 		"64"	"fBodyBodyGyroMag-std()"
 		"65"	"fBodyBodyGyroJerkMag-mean()"
 		"66"	"fBodyBodyGyroJerkMag-std()"
-	4. Use descriptive activity names in the data set
+	3. Use descriptive activity names in the data set
+	
+		data$activityID[data$activityID	== 1] = "WALKING" 
+     		data$activityID[data$activityID == 2] = "WALKING_UPSTAIRS" 
+      		data$activityID[data$activityID == 3] = "WALKING_DOWNSTAIRS" 
+     		data$activityID[data$activityID == 4] = "SITTING" 
+    		data$activityID[data$activityID == 5] = "STANDING" 
+     		data$activityID[data$activityID == 6] = "LAYING" 
+	4. Use descriptive variable names in the data set
+	
 		colnames(data)<-gsub("^t", "time", colnames(data))
 		colnames(data)<-gsub("^f", "frequency", colnames(data))
 		colnames(data)<-gsub("Acc", "Accelerometer", colnames(data))
@@ -763,7 +772,7 @@ library(reshape2)
 		names(completeDataSet)<-gsub("Acc", "Accelerometer", 	names(dataTable))
 		completeDataSet$ActivityID[ completeDataSet$ActivityID 	== 1] = "WALKING" 
      		completeDataSet$ActivityID[ completeDataSet$ActivityID 	== 2] = "WALKING_UPSTAIRS" 
-      	completeDataSet$ActivityID[ completeDataSet$ActivityID 	== 3] = "WALKING_DOWNSTAIRS" 
+      		completeDataSet$ActivityID[ completeDataSet$ActivityID 	== 3] = "WALKING_DOWNSTAIRS" 
      		completeDataSet$ActivityID[ completeDataSet$ActivityID 	== 4] = "SITTING" 
     		completeDataSet$ActivityID[ completeDataSet$ActivityID 	== 5] = "STANDING" 
      		completeDataSet$ActivityID[ completeDataSet$ActivityID 	== 6] = "LAYING" 
