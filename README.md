@@ -680,52 +680,6 @@ library(reshape2)
 		colnames(data)<-gsub("Mag", "Magnitude", colnames(data))
 		colnames(data)<-gsub("BodyBody", "Body", colnames(data))
 
-	# STEP 1: Merges the training and the test sets to create one data set
-
-	# Read subject_test data set	OK
-
-		subjectTest<-read.table("subject_test.txt")
-
-	# Read x_test data set	OK
-
-		xTest<-read.table("x_test.txt", header=FALSE)
- 	
-	# Read y_test data set OK
-
- 		yTest<-read.table("y_test.txt", header=FALSE)
-
-	# Read x_train data set OK
-
-		xTest<-read.table("x_ttrain.txt", header=FALSE)
- 	
-	# Read y_train data set 	OK
-
- 		yTest<-read.table("y_train.txt", header=FALSE)
-
-	# Read subject_train data set	OK
-
-		subjectTrain<-read.table("subject_train.txt", 	header=FALSE)
-	
-	# Combine all the Test data set	OK
-  
-                completeTestSet<-data.frame(subjectTest, yTest, 	xTest)
-	
-	# Combine all train data set
-		
-		 completeTrainSet<-data.frame(subjectTrain, yTrain, 		xTrain)
-	
-	# Combine completeDataSet by completeTrainSet and 	 	completeTestSet data set
-		
-		completeDataSet <- rbind(completeTrainSet, 	completeTestSet)
-
-	# Read features data set
-		
-		features <- read.table("features.txt", header=FALSE)
-
-	# Read activity_labels data set
-		
-		activityLabels <- read.table("activity_labels.txt", 	header=FALSE)
-
 	# create features measurement type data set
 
 		columnNames<-as.vector(features[,2])
