@@ -12,13 +12,13 @@ library(reshape2)
 		
 		# activity labels, features, and features info files
 		activitylabels <- read.table("activity_labels.txt")
-			 V1                 V2
-			1  1            WALKING
-			2  2   WALKING_UPSTAIRS
-			3  3 WALKING_DOWNSTAIRS
-			4  4            SITTING
-			5  5           STANDING
-			6  6             LAYING
+		V1                 V2
+		1  1            WALKING
+		2  2   WALKING_UPSTAIRS
+		3  3 WALKING_DOWNSTAIRS
+		4  4            SITTING
+		5  5           STANDING
+		6  6             LAYING
 		features <- read.table("features.txt")
 		"V1"		"V2"
 		"1"	1	"tBodyAcc-mean()-X"
@@ -547,7 +547,7 @@ library(reshape2)
 		"524"	524	"fBodyBodyAccJerkMag-entropy()"
 		"525"	525	"fBodyBodyAccJerkMag-maxInds"
 		"526"	526	"fBodyBodyAccJerkMag-meanFreq()"
-		"527"	527	"fBodyBodyAccJerkMag-skewness()"
+		"527"	527	"fBodyBodyAccJerkMag-skewness()"=
 		"528"	528	"fBodyBodyAccJerkMag-kurtosis()"
 		"529"	529	"fBodyBodyGyroMag-mean()"
 		"530"	530	"fBodyBodyGyroMag-std()"
@@ -591,12 +591,12 @@ library(reshape2)
 		# add subjectID and activityID in the subjectandactivity table
 		subjectandactivity<- c("subjectID","activityID")
 		# combine subject, activity, and features column binding
-		data <- cbind(df_data, df_subject,df_activity)
+		data <- cbind(df_data, df_subject,df_activity)   
 		data_colnames<- c(features$V2,subjectandactivity)  # combined the entire columns
-		names(data)<-names(data_colnames)
+		names(data)<-data_colnames
 		
 	2. Extracts only the measurements on the mean and standard deviation for each measurement.
-		meanstdcols <- names(data_colnames)[grep("mean\\(\\)|std\\(\\)",data_colnames)]
+		meanstdcols <- features$V2[grep("mean\\(\\)|std\\(\\)",features$V2)]  # try this
 		"1"	"tBodyAcc-mean()-X"
 		"2"	"tBodyAcc-mean()-Y"
 		"3"	"tBodyAcc-mean()-Z"
