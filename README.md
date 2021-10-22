@@ -683,59 +683,8 @@ library(reshape2)
 		colnames(dmeanstdcols)<-gsub("Mag", "Magnitude", colnames(meanstdcols))
 		colnames(meanstdcols)<-gsub("BodyBody", "Body", colnames(meanstdcols))
 		
-	# create features measurement type data set
-		colnames(data)<-gsub("mean", "Mean", colnames(data))
-		meanstdcols <-data[grep("Mean\\(\\)|std\\(\\)",names(data))]
-	
-	# Add Column Names in the Train data set
+	5. From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.
+		tidydata <- aggregate(. ~subjectID + activityID, meanstdcols, mean)
+		write.table(data.frame(tidydata), file = "tidydata.txt", row.names = FALSE)
 
-		colnames(completeDataSet)<-c("subject", "ActivityID", 	columnNames)
-	# grep names with mean or standard
-		
-		MeanandStDataSet <- grep("*mean*| *std*",columnNames) 	#var name
-
-	# Add Column Names in the Train data set
-
-		colnames(columnNames)<-c("featureNames")
-
-	# Use descriptive names for abriviation and Active names for 	ActiveID in the completeDataSet 
-
-        
-        
-	# sTEP 2. Extracts only the measurements on the mean and  	standard deviation for each  measurement.        	
-	        
-
-	 	meanstdcols <- grepl("mean\\(\\)", names		(completeDataSet)) | 
-         	grepl("std\\(\\)", names(completeDataSet)) 
- 
- 
- 	# ensure that we also keep the subjectID and activity 	columns 
-	 	
-		meanstdcols[1:2] <- TRUE  
- 	
-	# remove unnecessary columns 
-	 
-		completeDataSet <- completeDataSet[, meanstdcols] 
-
-	# STEP 3: Uses descriptive activity names to name the  	 	activities 
- 	# in the data set. 
-	# STEP 4: Appropriately labels the data set with descriptive 
-	# activity names.  
-		
-		names(completeDataSet)<-gsub("^t", "time", names			(completeDataSet))
-        	names(completeDataSet)<-gsub("^f", "frequency", names	(completeDataSet))
-		names(completeDataSet)<-gsub("*Gyro*", "Gyroscope", 	names(completeDataSet))
-		names(completeDataSet)<-gsub("*Mag*", "Magnitute", 	names(completeDataSet))
-		names(completeDataSet)<-gsub("Acc", "Accelerometer", 	names(dataTable))
-		completeDataSet$ActivityID[ completeDataSet$ActivityID 	== 1] = "WALKING" 
-     		completeDataSet$ActivityID[ completeDataSet$ActivityID 	== 2] = "WALKING_UPSTAIRS" 
-      		completeDataSet$ActivityID[ completeDataSet$ActivityID 	== 3] = "WALKING_DOWNSTAIRS" 
-     		completeDataSet$ActivityID[ completeDataSet$ActivityID 	== 4] = "SITTING" 
-    		completeDataSet$ActivityID[ completeDataSet$ActivityID 	== 5] = "STANDING" 
-     		completeDataSet$ActivityID[ completeDataSet$ActivityID 	== 6] = "LAYING" 
-
-# Step 5  Create a second, independent tidy data set with the average of each variable # for each activity and each subject
-melted <- melt(completeDataSet, id=c("subjectID","activity")) tidy <- dcast(melted, subjectID+activity ~ variable, mean)
-
-write.table(completeDataSet,file="TidyDataSet.txt",row.names=FALSE)
   		
