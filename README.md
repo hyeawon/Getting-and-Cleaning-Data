@@ -14,11 +14,11 @@ library(reshape2)
 		activitylabels <- read.table("activity_labels.txt")
 		V1                 V2
 		1  1            WALKING
-		2  2   WALKING_UPSTAIRS
-		3  3 WALKING_DOWNSTAIRS
+		2  2   		WALKING_UPSTAIRS
+		3  3 		WALKING_DOWNSTAIRS
 		4  4            SITTING
-		5  5           STANDING
-		6  6             LAYING
+		5  5           	STANDING
+		6  6            LAYING
 		features <- read.table("features.txt")
 		"V1"		"V2"
 		"1"	1	"tBodyAcc-mean()-X"
@@ -596,93 +596,96 @@ library(reshape2)
 		names(data)<-data_colnames
 		
 	2. Extracts only the measurements on the mean and standard deviation for each measurement.
-		meanstdcols <- features$V2[grep("mean\\(\\)|std\\(\\)",features$V2)]  # try this
-		"1"	"tBodyAcc-mean()-X"
-		"2"	"tBodyAcc-mean()-Y"
-		"3"	"tBodyAcc-mean()-Z"
-		"4"	"tBodyAcc-std()-X"
-		"5"	"tBodyAcc-std()-Y"
-		"6"	"tBodyAcc-std()-Z"
-		"7"	"tGravityAcc-mean()-X"
-		"8"	"tGravityAcc-mean()-Y"
-		"9"	"tGravityAcc-mean()-Z"
-		"10"	"tGravityAcc-std()-X"
-		"11"	"tGravityAcc-std()-Y"
-		"12"	"tGravityAcc-std()-Z"
-		"13"	"tBodyAccJerk-mean()-X"
-		"14"	"tBodyAccJerk-mean()-Y"
-		"15"	"tBodyAccJerk-mean()-Z"
-		"16"	"tBodyAccJerk-std()-X"
-		"17"	"tBodyAccJerk-std()-Y"
-		"18"	"tBodyAccJerk-std()-Z"
-		"19"	"tBodyGyro-mean()-X"
-		"20"	"tBodyGyro-mean()-Y"
-		"21"	"tBodyGyro-mean()-Z"
-		"22"	"tBodyGyro-std()-X"
-		"23"	"tBodyGyro-std()-Y"
-		"24"	"tBodyGyro-std()-Z"
-		"25"	"tBodyGyroJerk-mean()-X"
-		"26"	"tBodyGyroJerk-mean()-Y"
-		"27"	"tBodyGyroJerk-mean()-Z"
-		"28"	"tBodyGyroJerk-std()-X"
-		"29"	"tBodyGyroJerk-std()-Y"
-		"30"	"tBodyGyroJerk-std()-Z"
-		"31"	"tBodyAccMag-mean()"
-		"32"	"tBodyAccMag-std()"
-		"33"	"tGravityAccMag-mean()"
-		"34"	"tGravityAccMag-std()"
-		"35"	"tBodyAccJerkMag-mean()"
-		"36"	"tBodyAccJerkMag-std()"
-		"37"	"tBodyGyroMag-mean()"
-		"38"	"tBodyGyroMag-std()"
-		"39"	"tBodyGyroJerkMag-mean()"
-		"40"	"tBodyGyroJerkMag-std()"
-		"41"	"fBodyAcc-mean()-X"
-		"42"	"fBodyAcc-mean()-Y"
-		"43"	"fBodyAcc-mean()-Z"
-		"44"	"fBodyAcc-std()-X"
-		"45"	"fBodyAcc-std()-Y"
-		"46"	"fBodyAcc-std()-Z"
-		"47"	"fBodyAccJerk-mean()-X"
-		"48"	"fBodyAccJerk-mean()-Y"
-		"49"	"fBodyAccJerk-mean()-Z"
-		"50"	"fBodyAccJerk-std()-X"
-		"51"	"fBodyAccJerk-std()-Y"
-		"52"	"fBodyAccJerk-std()-Z"
-		"53"	"fBodyGyro-mean()-X"
-		"54"	"fBodyGyro-mean()-Y"
-		"55"	"fBodyGyro-mean()-Z"
-		"56"	"fBodyGyro-std()-X"
-		"57"	"fBodyGyro-std()-Y"
-		"58"	"fBodyGyro-std()-Z"
-		"59"	"fBodyAccMag-mean()"
-		"60"	"fBodyAccMag-std()"
-		"61"	"fBodyBodyAccJerkMag-mean()"
-		"62"	"fBodyBodyAccJerkMag-std()"
-		"63"	"fBodyBodyGyroMag-mean()"
-		"64"	"fBodyBodyGyroMag-std()"
-		"65"	"fBodyBodyGyroJerkMag-mean()"
-		"66"	"fBodyBodyGyroJerkMag-std()"
+		colnames(data)<-gsub("mean", "Mean", colnames(data))
+		meanstdcols <-data[grep("Mean\\(\\)|std\\(\\)",names(data))]  
+		 [1] "timeBodyAccelerometer-Mean()-X"                
+		 [2] "timeBodyAccelerometer-Mean()-Y"                
+		 [3] "timeBodyAccelerometer-Mean()-Z"                
+		 [4] "timeBodyAccelerometer-std()-X"                 
+		 [5] "timeBodyAccelerometer-std()-Y"                 
+		 [6] "timeBodyAccelerometer-std()-Z"                 
+		 [7] "timeGravityAccelerometer-Mean()-X"             
+		 [8] "timeGravityAccelerometer-Mean()-Y"             
+		 [9] "timeGravityAccelerometer-Mean()-Z"             
+		[10] "timeGravityAccelerometer-std()-X"              
+		[11] "timeGravityAccelerometer-std()-Y"              
+		[12] "timeGravityAccelerometer-std()-Z"              
+		[13] "timeBodyAccelerometerJerk-Mean()-X"            
+		[14] "timeBodyAccelerometerJerk-Mean()-Y"            
+		[15] "timeBodyAccelerometerJerk-Mean()-Z"            
+		[16] "timeBodyAccelerometerJerk-std()-X"             
+		[17] "timeBodyAccelerometerJerk-std()-Y"             
+		[18] "timeBodyAccelerometerJerk-std()-Z"             
+		[19] "timeBodyGyroscope-Mean()-X"                    
+		[20] "timeBodyGyroscope-Mean()-Y"                    
+		[21] "timeBodyGyroscope-Mean()-Z"                    
+		[22] "timeBodyGyroscope-std()-X"                     
+		[23] "timeBodyGyroscope-std()-Y"                     
+		[24] "timeBodyGyroscope-std()-Z"                     
+		[25] "timeBodyGyroscopeJerk-Mean()-X"                
+		[26] "timeBodyGyroscopeJerk-Mean()-Y"                
+		[27] "timeBodyGyroscopeJerk-Mean()-Z"                
+		[28] "timeBodyGyroscopeJerk-std()-X"                 
+		[29] "timeBodyGyroscopeJerk-std()-Y"                 
+		[30] "timeBodyGyroscopeJerk-std()-Z"                 
+		[31] "timeBodyAccelerometerMagnitude-Mean()"         
+		[32] "timeBodyAccelerometerMagnitude-std()"          
+		[33] "timeGravityAccelerometerMagnitude-Mean()"      
+		[34] "timeGravityAccelerometerMagnitude-std()"       
+		[35] "timeBodyAccelerometerJerkMagnitude-Mean()"     
+		[36] "timeBodyAccelerometerJerkMagnitude-std()"      
+		[37] "timeBodyGyroscopeMagnitude-Mean()"             
+		[38] "timeBodyGyroscopeMagnitude-std()"              
+		[39] "timeBodyGyroscopeJerkMagnitude-Mean()"         
+		[40] "timeBodyGyroscopeJerkMagnitude-std()"          
+		[41] "frequencyBodyAccelerometer-Mean()-X"           
+		[42] "frequencyBodyAccelerometer-Mean()-Y"           
+		[43] "frequencyBodyAccelerometer-Mean()-Z"           
+		[44] "frequencyBodyAccelerometer-std()-X"            
+		[45] "frequencyBodyAccelerometer-std()-Y"            
+		[46] "frequencyBodyAccelerometer-std()-Z"            
+		[47] "frequencyBodyAccelerometerJerk-Mean()-X"       
+		[48] "frequencyBodyAccelerometerJerk-Mean()-Y"       
+		[49] "frequencyBodyAccelerometerJerk-Mean()-Z"       
+		[50] "frequencyBodyAccelerometerJerk-std()-X"        
+		[51] "frequencyBodyAccelerometerJerk-std()-Y"        
+		[52] "frequencyBodyAccelerometerJerk-std()-Z"        
+		[53] "frequencyBodyGyroscope-Mean()-X"               
+		[54] "frequencyBodyGyroscope-Mean()-Y"               
+		[55] "frequencyBodyGyroscope-Mean()-Z"               
+		[56] "frequencyBodyGyroscope-std()-X"                
+		[57] "frequencyBodyGyroscope-std()-Y"                
+		[58] "frequencyBodyGyroscope-std()-Z"                
+		[59] "frequencyBodyAccelerometerMagnitude-Mean()"    
+		[60] "frequencyBodyAccelerometerMagnitude-std()"     
+		[61] "frequencyBodyAccelerometerJerkMagnitude-Mean()"
+		[62] "frequencyBodyAccelerometerJerkMagnitude-std()" 
+		[63] "frequencyBodyGyroscopeMagnitude-Mean()"        
+		[64] "frequencyBodyGyroscopeMagnitude-std()"         
+		[65] "frequencyBodyGyroscopeJerkMagnitude-Mean()"    
+		[66] "frequencyBodyGyroscopeJerkMagnitude-std()"     
+		[67] "subjectID"                                     
+		[68] "activityID"
 	3. Use descriptive activity names in the data set
 	
-		data$activityID[data$activityID	== 1] = "WALKING" 
-     		data$activityID[data$activityID == 2] = "WALKING_UPSTAIRS" 
-      		data$activityID[data$activityID == 3] = "WALKING_DOWNSTAIRS" 
-     		data$activityID[data$activityID == 4] = "SITTING" 
-    		data$activityID[data$activityID == 5] = "STANDING" 
-     		data$activityID[data$activityID == 6] = "LAYING" 
+		meanstdcols$activityID[meanstdcols$activityID == 1] = "WALKING" 
+     		meanstdcols$activityID[meanstdcols$activityID == 2] = "WALKING_UPSTAIRS"
+ 		meanstdcols$activityID[meanstdcols$activityID == 3] = "WALKING_DOWNSTAIRS"
+		meanstdcols$activityID[meanstdcols$activityID == 4] = "SITTING"
+		meanstdcols$activityID[meanstdcols$activityID == 5] = "STANDING"
+		meanstdcols$activityID[meanstdcols$activityID == 6] = "LAYING"
 	4. Use descriptive variable names in the data set
 	
-		colnames(data)<-gsub("^t", "time", colnames(data))
-		colnames(data)<-gsub("^f", "frequency", colnames(data))
-		colnames(data)<-gsub("Acc", "Accelerometer", colnames(data))
-		colnames(data)<-gsub("Gyro", "Gyroscope", colnames(data))
-		colnames(data)<-gsub("Mag", "Magnitude", colnames(data))
-		colnames(data)<-gsub("BodyBody", "Body", colnames(data))
-
+		colnames(meanstdcols)<-gsub("^t", "time", colnames(meanstdcols))
+		colnames(meanstdcols)<-gsub("^f", "frequency", colnames(meanstdcols))
+		colnames(meanstdcols)<-gsub("Acc", "Accelerometer", colnames(meanstdcols))
+		colnames(meanstdcols)<-gsub("Gyro", "Gyroscope", colnames(meanstdcols))
+		colnames(dmeanstdcols)<-gsub("Mag", "Magnitude", colnames(meanstdcols))
+		colnames(meanstdcols)<-gsub("BodyBody", "Body", colnames(meanstdcols))
+		
 	# create features measurement type data set
-
-		columnNames<-as.vector(features[,2])
+		colnames(data)<-gsub("mean", "Mean", colnames(data))
+		meanstdcols <-data[grep("Mean\\(\\)|std\\(\\)",names(data))]
 	
 	# Add Column Names in the Train data set
 
