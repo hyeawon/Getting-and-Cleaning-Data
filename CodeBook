@@ -23,10 +23,9 @@
  3. Assigning variable names
  4. Merge the data in one file which is data file
  5. Extracting the measurements of mean and standard deviation for each measurements.
- 	??????
  6. Changing the descriptive variable names in the data set
- 7. Final data set name will be data
-   Activity Labels file is included the following information.
+ 7. Final data set name will be tidydata
+    Activity Labels file is included the following information.
 	1   WALKING
 	2   WALKING_UPSTAIRS
 	3   WALKING_DOWNSTAIRS
